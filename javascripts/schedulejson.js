@@ -118,7 +118,7 @@ var scheduleJson = {
           },
           {
             "id": 7,
-            "start": 1800,
+            "start": 1600,
             "name": "FREE",
             "venue": "Tavern on Whyte",
             "bands": [
