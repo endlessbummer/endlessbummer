@@ -1,0 +1,16 @@
+<div class="sched-day">
+  <span class="dayName">{{dayName}}</span>
+  <span class="day-shows">
+    {{#each day-shows}}
+      {{#if showName}}
+        <span class="showName">{{showName}}</span>
+      {{/if}}
+      <span class="showVenue">{{showVenue}}</span>
+      <span class="showBands">
+        {{#each show-bands}}
+          <span class="bandName">{{bandName}}</span>
+        {{/each}}
+      </span>
+    {{/each}}
+  </span>
+</div>

@@ -17,6 +17,31 @@
 
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.4.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="javascripts/handlebars-1.0.0.js"></script>
+
+    <script id="entry-template" type="text/x-handlebars-template">
+      <div class="sched-day">
+        <span class="dayName">{{dayName}}</span>
+        <span class="day-shows">
+          {{#each day-shows}}
+            <span class="showStart">{{showStart}}</span>
+            <span class="showVenue">{{showVenue}}</span>
+            {{#if showName}}
+              <span class="showName"> - {{showName}}</span>
+            {{/if}}</span>
+            <span class="showBands">
+              {{#each show-bands}}
+                <span class="bandName">{{bandName}}</span>
+              {{/each}}
+            </span>
+          {{/each}}
+        </span>
+      </div>
+    </script>
+    
+    <script type="text/javascript" src="javascripts/schedulejson.js"></script>
+
     <script type="text/javascript">
         $(function () {
             $("#myTabs").tabs();
@@ -42,7 +67,7 @@
     });
     </script>
 
-    <title>Endlessbummer by endlessbummer</title>
+    <title>Endless Bummer - The Worst Music Festival in Edmonton</title>
   </head>
 
   <body>
@@ -450,8 +475,18 @@
   
             </div>
             <div id="tab-3">
-            
-            <img src="images/endless_schedule.jpg" alt="Schedule" width="454px" />
+              
+              <div id="schedButtons">
+                <button id="wednesday" class="daybutt">Wednesday</button>
+                <button id="thursday" class="daybutt">Thursday</button>
+                <button id="friday" class="daybutt">Friday</button>
+                <button id="saturday" class="daybutt">Saturday</button>
+                <button id="sunday" class="daybutt">Sunday</button>
+              </div><br/>
+              <div id="schedule-div">
+
+              </div>
+              <strong>Check back regularly, secret shows will be added secretly.</strong>
             </div>       
           </div>
         </div>
