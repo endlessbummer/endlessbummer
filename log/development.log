@@ -1,0 +1,270 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Creating scope :published_at. Overwriting existing method Article.published_at.
+Creating scope :spam. Overwriting existing method Comment.spam.
+Creating scope :presumed_spam. Overwriting existing method Comment.presumed_spam.
+Creating scope :presumed_ham. Overwriting existing method Comment.presumed_ham.
+Creating scope :ham. Overwriting existing method Comment.ham.
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-19 13:10:03 -0600
+  [1m[36mBlog Load (7.9ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Processing by ArticlesController#index as HTML
+  [1m[36mTrigger Load (5.1ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:03.998171')[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.9ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (4.6ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "contents" WHERE "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:04.186773') AND (type in ('Article', 'Note')) LIMIT 10 OFFSET 0) subquery_for_count [0m
+  [1m[35mContent Load (2.1ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:04.186773') AND (type in ('Article', 'Note')) ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mTextFilter Load (2.7ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."name" = 'markdown smartypants' LIMIT 1
+  Rendered articles/_article_excerpt.html.erb (17.4ms)
+  Rendered articles/_article_content.html.erb (18.1ms)
+  Rendered articles/_protected_article_content.html.erb (23.2ms)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mTag Load (2.4ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "articles_tags" ON "tags"."id" = "articles_tags"."tag_id" WHERE "articles_tags"."article_id" = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Rendered themes/bootstrap/views/articles/_meta.html.erb (33.6ms)
+  [1m[35m (1.9ms)[0m  SELECT COUNT(*) FROM "feedback" WHERE "feedback"."type" IN ('Comment') AND "feedback"."article_id" = 1 AND "feedback"."published" = 't'
+  Rendered themes/bootstrap/views/articles/_comment_counter.html.erb (8.6ms)
+  Rendered themes/bootstrap/views/articles/_article.html.erb (76.6ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:04.186773') AND (type in ('Article', 'Note'))[0m
+  Rendered themes/bootstrap/views/articles/index.html.erb within layouts/default.html (103.0ms)
+  Rendered shared/_page_header.html.erb (1.4ms)
+  [1m[35mPage Load (0.5ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:04.306466') ORDER BY published_at DESC
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSidebar Load (1.2ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:04.339431')[0m
+  [1m[35mPage Load (0.7ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:04.339431') ORDER BY published_at DESC, title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Rendered lib/page_sidebar/app/views/page_sidebar/_content.html.erb (4.3ms)
+  [1m[35mTag Load (1.2ms)[0m  
+ SELECT tags.id, tags.name, tags.display_name, COUNT(articles_tags.article_id) AS article_counter
+ FROM tags tags LEFT OUTER JOIN articles_tags articles_tags
+ ON articles_tags.tag_id = tags.id
+ LEFT OUTER JOIN contents articles
+ ON articles_tags.article_id = articles.id
+ WHERE articles.published = 't'
+ GROUP BY tags.id, tags.name, tags.display_name
+ ORDER BY article_counter DESC
+ LIMIT 1000 OFFSET 0
+ 
+  Rendered lib/tag_sidebar/app/views/tag_sidebar/_content.html.erb (2.4ms)
+  [1m[36mContent Load (1.5ms)[0m  [1mselect count(*) as count, extract(year from published_at) as year,extract(month from published_at) as month from contents where type='Article' and published = 't' and published_at < '2014-05-19 19:10:04.350247' group by year,month order by year desc,month desc limit 10 [0m
+  Rendered lib/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.6ms)
+  Rendered lib/static_sidebar/app/views/static_sidebar/_content.html.erb (0.3ms)
+  Rendered lib/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.6ms)
+Completed 200 OK in 363.0ms (Views: 138.9ms | ActiveRecord: 43.5ms)
+
+
+Started GET "/stylesheets/theme/bootstrap.min.css" for 127.0.0.1 at 2014-05-19 13:10:04 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"bootstrap.min.css"}
+  [1m[35mTrigger Load (0.6ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:04.415383')
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/bootstrap.min.css (0.1ms)
+Completed 200 OK in 4.2ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2014-05-19 13:10:04 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"style.css"}
+  [1m[35mTrigger Load (0.6ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:04.425672')
+  [1m[36mBlog Load (1.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/style.css (0.0ms)
+Completed 200 OK in 3.6ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/stylesheets/user-style.css" for 127.0.0.1 at 2014-05-19 13:10:04 -0600
+Processing by ArticlesController#redirect as HTML
+  Parameters: {"from"=>"stylesheets/user-style.css"}
+  [1m[35mTrigger Load (0.2ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:04.434452')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" 
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRedirect Load (1.0ms)[0m  SELECT "redirects".* FROM "redirects" WHERE "redirects"."from_path" = 'stylesheets/user-style.css' LIMIT 1
+  Rendered errors/404.html.erb within layouts/default.html (0.8ms)
+  Rendered shared/_page_header.html.erb (1.1ms)
+  [1m[36mPage Load (0.5ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:04.458183') ORDER BY published_at DESC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSidebar Load (0.2ms)[0m  [1mSELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:04.462777')
+  [1m[36mPage Load (0.5ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:04.462777') ORDER BY published_at DESC, title[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Rendered lib/page_sidebar/app/views/page_sidebar/_content.html.erb (2.9ms)
+  [1m[36mTag Load (0.8ms)[0m  [1m
+ SELECT tags.id, tags.name, tags.display_name, COUNT(articles_tags.article_id) AS article_counter
+ FROM tags tags LEFT OUTER JOIN articles_tags articles_tags
+ ON articles_tags.tag_id = tags.id
+ LEFT OUTER JOIN contents articles
+ ON articles_tags.article_id = articles.id
+ WHERE articles.published = 't'
+ GROUP BY tags.id, tags.name, tags.display_name
+ ORDER BY article_counter DESC
+ LIMIT 1000 OFFSET 0
+ [0m
+  Rendered lib/tag_sidebar/app/views/tag_sidebar/_content.html.erb (1.8ms)
+  [1m[35mContent Load (0.5ms)[0m  select count(*) as count, extract(year from published_at) as year,extract(month from published_at) as month from contents where type='Article' and published = 't' and published_at < '2014-05-19 19:10:04.468931' group by year,month order by year desc,month desc limit 10 
+  Rendered lib/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.6ms)
+  Rendered lib/static_sidebar/app/views/static_sidebar/_content.html.erb (0.3ms)
+  Rendered lib/meta_sidebar/app/views/meta_sidebar/_content.html.erb (1.8ms)
+Completed 404 Not Found in 45.6ms (Views: 25.6ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/assets/publify.js" for 127.0.0.1 at 2014-05-19 13:10:04 -0600
+Compiled jquery.js  (3ms)  (pid 48890)
+Compiled jquery_ujs.js  (0ms)  (pid 48890)
+Compiled publify.js  (21ms)  (pid 48890)
+Served asset /publify.js - 200 OK (28ms)
+
+
+Started GET "/assets/publify.css" for 127.0.0.1 at 2014-05-19 13:10:04 -0600
+Compiled coderay.css  (0ms)  (pid 48890)
+Compiled publify.css  (122ms)  (pid 48890)
+Served asset /publify.css - 200 OK (127ms)
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2014-05-19 13:10:04 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:04.720942')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/background.gif (0.1ms)
+Completed 200 OK in 2.8ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/images/theme/bg1.jpg" for 127.0.0.1 at 2014-05-19 13:10:04 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"bg1.jpg"}
+  [1m[36mTrigger Load (0.9ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:04.730036')[0m
+  [1m[35mBlog Load (1.5ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/bg1.jpg (0.1ms)
+Completed 200 OK in 4.4ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/images/theme/header-menu.png" for 127.0.0.1 at 2014-05-19 13:10:04 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"header-menu.png"}
+  [1m[36mTrigger Load (0.2ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:04.739019')[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/header-menu.png (0.0ms)
+Completed 200 OK in 2.1ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/pages/hey-look-at-the-new-blog" for 127.0.0.1 at 2014-05-19 13:10:28 -0600
+Processing by ArticlesController#view_page as HTML
+  Parameters: {"name"=>"hey-look-at-the-new-blog"}
+  [1m[36mTrigger Load (0.4ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:28.218627')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."name" = 'hey-look-at-the-new-blog' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mTextFilter Load (1.2ms)[0m  SELECT "text_filters".* FROM "text_filters" WHERE "text_filters"."id" = 1 LIMIT 1
+  Rendered themes/bootstrap/views/articles/view_page.html.erb within layouts/default.html (4.1ms)
+  Rendered shared/_page_header.html.erb (1.2ms)
+  [1m[36mPage Load (0.5ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:28.231813') ORDER BY published_at DESC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36mSidebar Load (0.3ms)[0m  [1mSELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:28.236608')
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:28.236608') ORDER BY published_at DESC, title[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  Rendered lib/page_sidebar/app/views/page_sidebar/_content.html.erb (2.5ms)
+  [1m[36mTag Load (0.6ms)[0m  [1m
+ SELECT tags.id, tags.name, tags.display_name, COUNT(articles_tags.article_id) AS article_counter
+ FROM tags tags LEFT OUTER JOIN articles_tags articles_tags
+ ON articles_tags.tag_id = tags.id
+ LEFT OUTER JOIN contents articles
+ ON articles_tags.article_id = articles.id
+ WHERE articles.published = 't'
+ GROUP BY tags.id, tags.name, tags.display_name
+ ORDER BY article_counter DESC
+ LIMIT 1000 OFFSET 0
+ [0m
+  Rendered lib/tag_sidebar/app/views/tag_sidebar/_content.html.erb (1.6ms)
+  [1m[35mContent Load (0.4ms)[0m  select count(*) as count, extract(year from published_at) as year,extract(month from published_at) as month from contents where type='Article' and published = 't' and published_at < '2014-05-19 19:10:28.242286' group by year,month order by year desc,month desc limit 10 
+  Rendered lib/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.6ms)
+  Rendered lib/static_sidebar/app/views/static_sidebar/_content.html.erb (0.3ms)
+  Rendered lib/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.6ms)
+Completed 200 OK in 30.2ms (Views: 22.5ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/stylesheets/theme/bootstrap.min.css" for 127.0.0.1 at 2014-05-19 13:10:28 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"bootstrap.min.css"}
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:28.278673')[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/bootstrap.min.css (0.0ms)
+Completed 200 OK in 1.9ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2014-05-19 13:10:28 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.2ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:28.283563')[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/style.css (0.0ms)
+Completed 200 OK in 1.9ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/stylesheets/user-style.css" for 127.0.0.1 at 2014-05-19 13:10:28 -0600
+Processing by ArticlesController#redirect as HTML
+  Parameters: {"from"=>"stylesheets/user-style.css"}
+  [1m[36mTrigger Load (1.1ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:28.292623')[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRedirect Load (0.3ms)[0m  [1mSELECT "redirects".* FROM "redirects" WHERE "redirects"."from_path" = 'stylesheets/user-style.css' LIMIT 1[0m
+  Rendered errors/404.html.erb within layouts/default.html (0.4ms)
+  Rendered shared/_page_header.html.erb (0.7ms)
+  [1m[35mPage Load (0.4ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:28.303625') ORDER BY published_at DESC
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35mSidebar Load (0.5ms)[0m  SELECT "sidebars".* FROM "sidebars" ORDER BY active_position ASC
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:28.309116')[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."type" IN ('Page') AND "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 19:10:28.309116') ORDER BY published_at DESC, title
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  Rendered lib/page_sidebar/app/views/page_sidebar/_content.html.erb (2.6ms)
+  [1m[35mTag Load (0.6ms)[0m  
+ SELECT tags.id, tags.name, tags.display_name, COUNT(articles_tags.article_id) AS article_counter
+ FROM tags tags LEFT OUTER JOIN articles_tags articles_tags
+ ON articles_tags.tag_id = tags.id
+ LEFT OUTER JOIN contents articles
+ ON articles_tags.article_id = articles.id
+ WHERE articles.published = 't'
+ GROUP BY tags.id, tags.name, tags.display_name
+ ORDER BY article_counter DESC
+ LIMIT 1000 OFFSET 0
+ 
+  Rendered lib/tag_sidebar/app/views/tag_sidebar/_content.html.erb (1.7ms)
+  [1m[36mContent Load (0.4ms)[0m  [1mselect count(*) as count, extract(year from published_at) as year,extract(month from published_at) as month from contents where type='Article' and published = 't' and published_at < '2014-05-19 19:10:28.314854' group by year,month order by year desc,month desc limit 10 [0m
+  Rendered lib/archives_sidebar/app/views/archives_sidebar/_content.html.erb (0.6ms)
+  Rendered lib/static_sidebar/app/views/static_sidebar/_content.html.erb (0.3ms)
+  Rendered lib/meta_sidebar/app/views/meta_sidebar/_content.html.erb (0.9ms)
+Completed 404 Not Found in 29.0ms (Views: 20.7ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/images/theme/bg2.jpg" for 127.0.0.1 at 2014-05-19 13:10:28 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"bg2.jpg"}
+  [1m[35mTrigger Load (0.3ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:28.362069')
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/bg2.jpg (0.1ms)
+Completed 200 OK in 2.8ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2014-05-19 13:10:28 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.2ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:28.370730')
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/background.gif (0.0ms)
+Completed 200 OK in 2.0ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/images/theme/header-menu.png" for 127.0.0.1 at 2014-05-19 13:10:28 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"header-menu.png"}
+  [1m[35mTrigger Load (0.2ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 19:10:28.375497')
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/header-menu.png (0.0ms)
+Completed 200 OK in 2.2ms (ActiveRecord: 0.5ms)
