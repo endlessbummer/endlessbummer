@@ -14,8 +14,14 @@ class ArticlesController < ContentController
     conditions = (Blog.default.statuses_in_timeline) ? ["type in (?, ?)", "Article", "Note"] : ["type = ?", "Article"]
 
     limit = this_blog.per_page(params[:format])
-    unless params[:year].blank?
-      @articles = Content.published_at(params.values_at(:year, :month, :day)).where(conditions).page(params[:page]).per(limit)
+    if params[:stupid].present?
+      @articles = Content.published.where(:type => 'Article').where(:post_type => 'arts').page(params[:page]).per(limit)
+    elsif params[:lame].present?
+      @articles = Content.published.where(:type => 'Article').where(:post_type => 'musics').page(params[:page]).per(limit)
+    elsif params[:fart].present?
+      @articles = Content.published.where(:type => 'Article').where(:post_type => 'politics').page(params[:page]).per(limit)
+    elsif params[:phudge].present?
+      @articles = Content.published.where(:type => 'Article').where(:post_type => 'environments').page(params[:page]).per(limit)
     else
       @articles = Content.published.where(conditions).page(params[:page]).per(limit)
     end
