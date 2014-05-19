@@ -26120,3 +26120,446 @@ Served asset /spinner.gif - 304 Not Modified (0ms)
 
 Started GET "/assets/fonts/glyphicons-halflings-regular.woff" for 127.0.0.1 at 2014-05-19 16:52:33 -0600
 Served asset /fonts/glyphicons-halflings-regular.woff - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-19 17:47:25 -0600
+Processing by ArticlesController#index as HTML
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:25.327666')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "contents" WHERE "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:47:25.331062') AND (type in ('Article', 'Note')) LIMIT 10 OFFSET 0) subquery_for_count [0m
+  Rendered articles/error.html.erb within layouts/default.html (0.0ms)
+  [1m[35mContent Load (0.5ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."published" = 't' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:47:25.331062') AND (type in ('Article', 'Note')) ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  Rendered shared/_page_header.html.erb (1.7ms)
+Completed 200 OK in 10.5ms (Views: 5.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/stylesheets/theme/bootstrap.min.css" for 127.0.0.1 at 2014-05-19 17:47:25 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"bootstrap.min.css"}
+  [1m[36mTrigger Load (0.6ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:25.358734')[0m
+  [1m[35mBlog Load (0.5ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/bootstrap.min.css (0.0ms)
+Completed 200 OK in 3.7ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2014-05-19 17:47:25 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:25.365086')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/style.css (0.0ms)
+Completed 200 OK in 2.1ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/stylesheets/user-style.css" for 127.0.0.1 at 2014-05-19 17:47:25 -0600
+Processing by ArticlesController#redirect as HTML
+  Parameters: {"from"=>"stylesheets/user-style.css"}
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:25.371487')[0m
+  [1m[35mBlog Load (0.4ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRedirect Load (0.2ms)[0m  [1mSELECT "redirects".* FROM "redirects" WHERE "redirects"."from_path" = 'stylesheets/user-style.css' LIMIT 1[0m
+  Rendered errors/404.html.erb within layouts/default.html (0.3ms)
+  Rendered shared/_page_header.html.erb (0.7ms)
+Completed 404 Not Found in 9.3ms (Views: 4.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/publify.css" for 127.0.0.1 at 2014-05-19 17:47:25 -0600
+Served asset /publify.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/publify.js" for 127.0.0.1 at 2014-05-19 17:47:25 -0600
+Served asset /publify.js - 304 Not Modified (0ms)
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2014-05-19 17:47:25 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.2ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:25.436884')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/background.gif (0.0ms)
+Completed 200 OK in 1.9ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/images/theme/bg1.jpg" for 127.0.0.1 at 2014-05-19 17:47:25 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"bg1.jpg"}
+  [1m[35mTrigger Load (0.3ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:25.441491')
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/bg1.jpg (0.0ms)
+Completed 200 OK in 1.9ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/images/theme/header-menu.png" for 127.0.0.1 at 2014-05-19 17:47:25 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"header-menu.png"}
+  [1m[35mTrigger Load (0.9ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:25.446269')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/header-menu.png (0.0ms)
+Completed 200 OK in 2.7ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/?stupid=true" for 127.0.0.1 at 2014-05-19 17:47:28 -0600
+Processing by ArticlesController#index as HTML
+  Parameters: {"stupid"=>"true"}
+  [1m[35mTrigger Load (0.3ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:28.030367')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "contents" WHERE "contents"."published" = 't' AND "contents"."type" = 'Article' AND "contents"."post_type" = 'arts' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:47:28.034499') LIMIT 10 OFFSET 0) subquery_for_count 
+  Rendered articles/error.html.erb within layouts/default.html (0.0ms)
+  [1m[36mContent Load (0.5ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."published" = 't' AND "contents"."type" = 'Article' AND "contents"."post_type" = 'arts' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:47:28.034499') ORDER BY published_at DESC LIMIT 10 OFFSET 0[0m
+  Rendered shared/_page_header.html.erb (1.9ms)
+Completed 200 OK in 11.3ms (Views: 5.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/stylesheets/theme/bootstrap.min.css" for 127.0.0.1 at 2014-05-19 17:47:28 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"bootstrap.min.css"}
+  [1m[35mTrigger Load (0.2ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:28.051683')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/bootstrap.min.css (0.1ms)
+Completed 200 OK in 4.3ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2014-05-19 17:47:28 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"style.css"}
+  [1m[35mTrigger Load (0.3ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:28.059293')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/style.css (0.0ms)
+Completed 200 OK in 1.9ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/stylesheets/user-style.css" for 127.0.0.1 at 2014-05-19 17:47:28 -0600
+Processing by ArticlesController#redirect as HTML
+  Parameters: {"from"=>"stylesheets/user-style.css"}
+  [1m[35mTrigger Load (0.2ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:28.064241')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" 
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRedirect Load (0.3ms)[0m  SELECT "redirects".* FROM "redirects" WHERE "redirects"."from_path" = 'stylesheets/user-style.css' LIMIT 1
+  Rendered errors/404.html.erb within layouts/default.html (0.4ms)
+  Rendered shared/_page_header.html.erb (0.7ms)
+Completed 404 Not Found in 8.9ms (Views: 5.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/publify.css" for 127.0.0.1 at 2014-05-19 17:47:28 -0600
+Served asset /publify.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/publify.js" for 127.0.0.1 at 2014-05-19 17:47:28 -0600
+Served asset /publify.js - 304 Not Modified (0ms)
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2014-05-19 17:47:28 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:28.107394')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/background.gif (0.5ms)
+Completed 200 OK in 7.5ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/images/theme/bg2.jpg" for 127.0.0.1 at 2014-05-19 17:47:28 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"bg2.jpg"}
+  [1m[36mTrigger Load (0.2ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:28.122712')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/bg2.jpg (0.0ms)
+Completed 200 OK in 2.0ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/images/theme/header-menu.png" for 127.0.0.1 at 2014-05-19 17:47:28 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"header-menu.png"}
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:28.129330')[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/header-menu.png (0.0ms)
+Completed 200 OK in 2.5ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/?lame=true" for 127.0.0.1 at 2014-05-19 17:47:29 -0600
+Processing by ArticlesController#index as HTML
+  Parameters: {"lame"=>"true"}
+  [1m[36mTrigger Load (0.4ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:29.837270')[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "contents" WHERE "contents"."published" = 't' AND "contents"."type" = 'Article' AND "contents"."post_type" = 'musics' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:47:29.841444') LIMIT 10 OFFSET 0) subquery_for_count [0m
+  Rendered articles/error.html.erb within layouts/default.html (0.0ms)
+  [1m[35mContent Load (0.5ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."published" = 't' AND "contents"."type" = 'Article' AND "contents"."post_type" = 'musics' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:47:29.841444') ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  Rendered shared/_page_header.html.erb (1.5ms)
+Completed 200 OK in 11.6ms (Views: 5.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/stylesheets/theme/bootstrap.min.css" for 127.0.0.1 at 2014-05-19 17:47:29 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"bootstrap.min.css"}
+  [1m[36mTrigger Load (0.2ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:29.860064')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/bootstrap.min.css (0.0ms)
+Completed 200 OK in 1.9ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2014-05-19 17:47:29 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.2ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:29.864855')[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/style.css (0.0ms)
+Completed 200 OK in 1.6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/stylesheets/user-style.css" for 127.0.0.1 at 2014-05-19 17:47:29 -0600
+Processing by ArticlesController#redirect as HTML
+  Parameters: {"from"=>"stylesheets/user-style.css"}
+  [1m[36mTrigger Load (0.2ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:29.869201')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRedirect Load (0.3ms)[0m  [1mSELECT "redirects".* FROM "redirects" WHERE "redirects"."from_path" = 'stylesheets/user-style.css' LIMIT 1[0m
+  Rendered errors/404.html.erb within layouts/default.html (0.5ms)
+  Rendered shared/_page_header.html.erb (0.7ms)
+Completed 404 Not Found in 8.8ms (Views: 5.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/publify.css" for 127.0.0.1 at 2014-05-19 17:47:29 -0600
+Served asset /publify.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/publify.js" for 127.0.0.1 at 2014-05-19 17:47:29 -0600
+Served asset /publify.js - 304 Not Modified (0ms)
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2014-05-19 17:47:29 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.3ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:29.911795')
+  [1m[36mBlog Load (1.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/background.gif (0.0ms)
+Completed 200 OK in 9.7ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/images/theme/header-menu.png" for 127.0.0.1 at 2014-05-19 17:47:29 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"header-menu.png"}
+  [1m[35mTrigger Load (0.2ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:29.924633')
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/header-menu.png (0.0ms)
+Completed 200 OK in 1.9ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/?fart=true" for 127.0.0.1 at 2014-05-19 17:47:31 -0600
+Processing by ArticlesController#index as HTML
+  Parameters: {"fart"=>"true"}
+  [1m[35mTrigger Load (0.3ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:31.546439')
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "contents" WHERE "contents"."published" = 't' AND "contents"."type" = 'Article' AND "contents"."post_type" = 'politics' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:47:31.550363') LIMIT 10 OFFSET 0) subquery_for_count 
+  Rendered articles/error.html.erb within layouts/default.html (0.0ms)
+  [1m[36mContent Load (0.4ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."published" = 't' AND "contents"."type" = 'Article' AND "contents"."post_type" = 'politics' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:47:31.550363') ORDER BY published_at DESC LIMIT 10 OFFSET 0[0m
+  Rendered shared/_page_header.html.erb (1.3ms)
+Completed 200 OK in 10.8ms (Views: 5.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/stylesheets/theme/bootstrap.min.css" for 127.0.0.1 at 2014-05-19 17:47:31 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"bootstrap.min.css"}
+  [1m[35mTrigger Load (0.3ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:31.569272')
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/bootstrap.min.css (0.0ms)
+Completed 200 OK in 2.4ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2014-05-19 17:47:31 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"style.css"}
+  [1m[35mTrigger Load (0.2ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:31.575378')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/style.css (0.0ms)
+Completed 200 OK in 1.6ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/stylesheets/user-style.css" for 127.0.0.1 at 2014-05-19 17:47:31 -0600
+Processing by ArticlesController#redirect as HTML
+  Parameters: {"from"=>"stylesheets/user-style.css"}
+  [1m[35mTrigger Load (0.2ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:31.579685')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" 
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRedirect Load (0.3ms)[0m  SELECT "redirects".* FROM "redirects" WHERE "redirects"."from_path" = 'stylesheets/user-style.css' LIMIT 1
+  Rendered errors/404.html.erb within layouts/default.html (0.3ms)
+  Rendered shared/_page_header.html.erb (0.8ms)
+Completed 404 Not Found in 8.5ms (Views: 5.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/publify.css" for 127.0.0.1 at 2014-05-19 17:47:31 -0600
+Served asset /publify.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/publify.js" for 127.0.0.1 at 2014-05-19 17:47:31 -0600
+Served asset /publify.js - 304 Not Modified (0ms)
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2014-05-19 17:47:31 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:31.622709')[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/background.gif (0.0ms)
+Completed 200 OK in 2.5ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/images/theme/header-menu.png" for 127.0.0.1 at 2014-05-19 17:47:31 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"header-menu.png"}
+  [1m[36mTrigger Load (0.2ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:31.628288')[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/header-menu.png (0.0ms)
+Completed 200 OK in 1.6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/?phudge=true" for 127.0.0.1 at 2014-05-19 17:47:33 -0600
+Processing by ArticlesController#index as HTML
+  Parameters: {"phudge"=>"true"}
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:33.060329')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "contents" WHERE "contents"."published" = 't' AND "contents"."type" = 'Article' AND "contents"."post_type" = 'environments' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:47:33.063968') LIMIT 10 OFFSET 0) subquery_for_count [0m
+  Rendered articles/error.html.erb within layouts/default.html (0.0ms)
+  [1m[35mContent Load (0.4ms)[0m  SELECT "contents".* FROM "contents" WHERE "contents"."published" = 't' AND "contents"."type" = 'Article' AND "contents"."post_type" = 'environments' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:47:33.063968') ORDER BY published_at DESC LIMIT 10 OFFSET 0
+  Rendered shared/_page_header.html.erb (1.3ms)
+Completed 200 OK in 10.1ms (Views: 4.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/stylesheets/theme/bootstrap.min.css" for 127.0.0.1 at 2014-05-19 17:47:33 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"bootstrap.min.css"}
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:33.084122')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/bootstrap.min.css (0.0ms)
+Completed 200 OK in 2.2ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2014-05-19 17:47:33 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"style.css"}
+  [1m[36mTrigger Load (0.2ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:33.089334')[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/style.css (0.0ms)
+Completed 200 OK in 1.8ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/stylesheets/user-style.css" for 127.0.0.1 at 2014-05-19 17:47:33 -0600
+Processing by ArticlesController#redirect as HTML
+  Parameters: {"from"=>"stylesheets/user-style.css"}
+  [1m[36mTrigger Load (0.2ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:33.094008')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRedirect Load (0.2ms)[0m  [1mSELECT "redirects".* FROM "redirects" WHERE "redirects"."from_path" = 'stylesheets/user-style.css' LIMIT 1[0m
+  Rendered errors/404.html.erb within layouts/default.html (0.3ms)
+  Rendered shared/_page_header.html.erb (0.8ms)
+Completed 404 Not Found in 8.6ms (Views: 5.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/publify.css" for 127.0.0.1 at 2014-05-19 17:47:33 -0600
+Served asset /publify.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/publify.js" for 127.0.0.1 at 2014-05-19 17:47:33 -0600
+Served asset /publify.js - 304 Not Modified (0ms)
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2014-05-19 17:47:33 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"background.gif"}
+  [1m[35mTrigger Load (0.4ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:33.168714')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/background.gif (0.0ms)
+Completed 200 OK in 2.2ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/images/theme/header-menu.png" for 127.0.0.1 at 2014-05-19 17:47:33 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"header-menu.png"}
+  [1m[35mTrigger Load (0.3ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:47:33.173943')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/header-menu.png (0.0ms)
+Completed 200 OK in 1.8ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/?phudge=true" for 127.0.0.1 at 2014-05-19 17:49:17 -0600
+Processing by ArticlesController#index as HTML
+  Parameters: {"phudge"=>"true"}
+  [1m[35mTrigger Load (0.2ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:49:17.428604')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "contents" WHERE "contents"."published" = 't' AND "contents"."type" = 'Article' AND "contents"."post_type" = 'environments' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:49:17.431499') LIMIT 10 OFFSET 0) subquery_for_count 
+  Rendered articles/error.html.erb within layouts/default.html (0.0ms)
+  [1m[36mContent Load (0.5ms)[0m  [1mSELECT "contents".* FROM "contents" WHERE "contents"."published" = 't' AND "contents"."type" = 'Article' AND "contents"."post_type" = 'environments' AND ("contents"."published_at" BETWEEN '1970-01-01 00:00:00.000000' AND '2014-05-19 23:49:17.431499') ORDER BY published_at DESC LIMIT 10 OFFSET 0[0m
+  Rendered shared/_page_header.html.erb (1.6ms)
+Completed 200 OK in 18.5ms (Views: 13.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/stylesheets/theme/bootstrap.min.css" for 127.0.0.1 at 2014-05-19 17:49:17 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"bootstrap.min.css"}
+  [1m[35mTrigger Load (0.3ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:49:17.458672')
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/bootstrap.min.css (0.0ms)
+Completed 200 OK in 2.1ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/stylesheets/theme/style.css" for 127.0.0.1 at 2014-05-19 17:49:17 -0600
+Processing by ThemeController#stylesheets as HTML
+  Parameters: {"filename"=>"style.css"}
+  [1m[35mTrigger Load (0.4ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:49:17.464271')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/stylesheets/style.css (0.0ms)
+Completed 200 OK in 2.1ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/stylesheets/user-style.css" for 127.0.0.1 at 2014-05-19 17:49:17 -0600
+Processing by ArticlesController#redirect as HTML
+  Parameters: {"from"=>"stylesheets/user-style.css"}
+  [1m[35mTrigger Load (0.2ms)[0m  SELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:49:17.471353')
+  [1m[36mBlog Load (0.2ms)[0m  [1mSELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" 
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRedirect Load (0.2ms)[0m  SELECT "redirects".* FROM "redirects" WHERE "redirects"."from_path" = 'stylesheets/user-style.css' LIMIT 1
+  Rendered errors/404.html.erb within layouts/default.html (0.3ms)
+  Rendered shared/_page_header.html.erb (1.1ms)
+Completed 404 Not Found in 10.1ms (Views: 6.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/publify.css" for 127.0.0.1 at 2014-05-19 17:49:17 -0600
+Served asset /publify.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/publify.js" for 127.0.0.1 at 2014-05-19 17:49:17 -0600
+Served asset /publify.js - 304 Not Modified (0ms)
+
+
+Started GET "/images/theme/background.gif" for 127.0.0.1 at 2014-05-19 17:49:17 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"background.gif"}
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:49:17.532566')[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/background.gif (0.1ms)
+Completed 200 OK in 2.7ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/images/theme/header-menu.png" for 127.0.0.1 at 2014-05-19 17:49:17 -0600
+Processing by ThemeController#images as HTML
+  Parameters: {"filename"=>"header-menu.png"}
+  [1m[36mTrigger Load (0.3ms)[0m  [1mSELECT "triggers".* FROM "triggers" WHERE (due_at <= '2014-05-19 23:49:17.540295')[0m
+  [1m[35mBlog Load (0.3ms)[0m  SELECT "blogs".* FROM "blogs" ORDER BY id LIMIT 1
+Sent file /Users/dfenniak/code/charity/endlessbummer/themes/bootstrap/images/header-menu.png (0.0ms)
+Completed 200 OK in 2.0ms (ActiveRecord: 0.5ms)
